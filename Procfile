@@ -1,1 +1,0 @@
-web: java -Dserver.port=$PORT -war target/rgsm-bot.war
