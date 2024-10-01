@@ -3,6 +3,6 @@ spring:
     name: 2gasm-bot
 2g:
   token:
-    sometoken
+    ${TOKEN:sometoken}
   default-command:
     !
