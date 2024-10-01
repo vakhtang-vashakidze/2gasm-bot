@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: 2gasm-bot
+2g:
+  token:
+    sometoken
+  default-command:
+    !
