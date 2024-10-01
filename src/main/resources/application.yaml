@@ -5,4 +5,5 @@ spring:
   token:
     ${TOKEN:sometoken}
   default-command:
-    !
+    "!"
+
