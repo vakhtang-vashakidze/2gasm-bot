@@ -18,7 +18,7 @@ WORKDIR /usr/local/tomcat
 
 RUN rm -rf webapps/*
 
-COPY --from=builder /app/target/rgsm-bot.war /usr/local/tomcat/webapps/ROOT.war
+COPY --from=builder /app/target/rgsm-bot-0.0.1.war /usr/local/tomcat/webapps/ROOT.war
 
 EXPOSE 8080
 
