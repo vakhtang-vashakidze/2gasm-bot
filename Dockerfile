@@ -1,17 +1,25 @@
-# Use an official Tomcat image as the base image
+# Stage 1: Build the application using Maven
+FROM maven:3.8.6-eclipse-temurin-17 AS builder
+
+WORKDIR /app
+
+COPY pom.xml .
+
+RUN mvn dependency:go-offline
+
+COPY src ./src
+
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run the application using Tomcat
 FROM tomcat:10-jdk17
 
-# Set the working directory in the container
 WORKDIR /usr/local/tomcat
 
-# Remove default Tomcat webapps
 RUN rm -rf webapps/*
 
-# Copy the WAR file into the Tomcat webapps directory
-COPY target/rgsm-bot.war /usr/local/tomcat/webapps/ROOT.war
+COPY --from=builder /app/target/rgsm-bot.war /usr/local/tomcat/webapps/ROOT.war
 
-# Expose port 8080
 EXPOSE 8080
 
-# Start Tomcat server
 CMD ["catalina.sh", "run"]
