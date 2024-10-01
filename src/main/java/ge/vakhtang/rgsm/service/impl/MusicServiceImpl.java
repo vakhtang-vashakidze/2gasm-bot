@@ -9,7 +9,6 @@ public class MusicServiceImpl implements MusicService {
 
     @Override
     public void tryPlayingQuery(String query, MessageChannelUnion channel) {
-
         channel.sendMessage("Playing ".concat(query)).queue();
 
     }
