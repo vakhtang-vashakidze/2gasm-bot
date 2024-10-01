@@ -15,7 +15,7 @@ public class MobilityServiceImpl implements MobilityService {
         Guild guild = event.getChannel().asGuildMessageChannel().getGuild();//server
         GuildVoiceState voiceState = event.getMember().getVoiceState();
         if (voiceState.inAudioChannel()) {
-            if (guild.getAudioManager().isConnected()) {
+            if (!guild.getAudioManager().isConnected()) {
                 event.getChannel().sendMessage("Wassup baby! Put it down!").queue();
                 AudioChannelUnion currentChannelOfCommander = voiceState.getChannel();
                 guild.getAudioManager().openAudioConnection(currentChannelOfCommander);
