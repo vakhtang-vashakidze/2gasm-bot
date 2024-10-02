@@ -1,4 +1,4 @@
-package ge.vakhtang.rgsm.config;
+package ge.vakhtang.rgsm.configs;
 
 import lombok.Getter;
 
