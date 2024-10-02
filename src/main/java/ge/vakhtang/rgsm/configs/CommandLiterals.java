@@ -3,16 +3,15 @@ package ge.vakhtang.rgsm.configs;
 import lombok.Getter;
 
 @Getter
-public enum Instructions {
+public enum CommandLiterals {
     PLAY("play"),
-
     JOIN("join"),
-
-    DISCONNECT("disconnect");
+    DISCONNECT("disconnect"),
+    SKIP("skip");
 
     private final String literal;
 
-    Instructions(String literal) {
+    CommandLiterals(String literal) {
         this.literal = literal;
     }
 

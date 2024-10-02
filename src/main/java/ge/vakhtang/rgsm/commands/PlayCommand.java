@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
+import static ge.vakhtang.rgsm.configs.CommandLiterals.PLAY;
 import static ge.vakhtang.rgsm.handlers.MobilityHandler.handleJoin;
 
 @Component
@@ -18,7 +19,7 @@ public class PlayCommand extends ListenerAdapter {
 
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
-        if (!event.getName().equals("play")) {
+        if (!event.getName().equals(PLAY.getLiteral())) {
             return;
         }
         handleJoin(event);

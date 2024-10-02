@@ -7,12 +7,14 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
+import static ge.vakhtang.rgsm.configs.CommandLiterals.DISCONNECT;
+
 @Component
 public class DisconnectCommand extends ListenerAdapter {
 
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
-        if (!event.getName().equals("disconnect")) {
+        if (!event.getName().equals(DISCONNECT.getLiteral())) {
             return;
         }
         Guild guild = event.getChannel().asGuildMessageChannel().getGuild();//server

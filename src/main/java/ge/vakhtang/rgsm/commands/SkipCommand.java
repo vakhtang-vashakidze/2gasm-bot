@@ -6,6 +6,8 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
+import static ge.vakhtang.rgsm.configs.CommandLiterals.SKIP;
+
 @Component
 public class SkipCommand extends ListenerAdapter {
     private final JukeBox jukeBox;
@@ -16,7 +18,7 @@ public class SkipCommand extends ListenerAdapter {
 
     @Override
     public void onSlashCommandInteraction(@NotNull SlashCommandInteractionEvent event) {
-        if (!event.getName().equals("skip")) {
+        if (!event.getName().equals(SKIP.getLiteral())) {
             return;
         }
 
