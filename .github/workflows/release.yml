@@ -25,7 +25,7 @@ jobs:
         with:
           host: ${{ secrets.DIGITALOCEAN_HOST }}
           username: ${{ secrets.DIGITALOCEAN_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.DIGITALOCEAN_PASSWORD }}
           source: target/*.jar
           target: ${{ secrets.DEPLOY_PATH }}
 
@@ -34,7 +34,7 @@ jobs:
         with:
           host: ${{ secrets.DIGITALOCEAN_HOST }}
           username: ${{ secrets.DIGITALOCEAN_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          password: ${{ secrets.DIGITALOCEAN_PASSWORD }}
           script: |
             cd ${{ secrets.DEPLOY_PATH }}
             sudo systemctl stop 2g.service || true
