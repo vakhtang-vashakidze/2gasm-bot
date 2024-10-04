@@ -36,14 +36,14 @@ public class BotConfig {
                 .setActivity(Activity.customStatus("2G bouncing"))
                 .addEventListeners(listenerAdapters)
                 .build();
-        jda.updateCommands().addCommands(
+        jda.getGuilds().forEach(guild -> guild.updateCommands().addCommands(
                 Commands.slash("play", "2G plays song for you.")
                         .addOption(OptionType.STRING, "url", "song url to search", true),
                 Commands.slash("skip", "2G skips song for you."),
                 Commands.slash("clear", "2G clears song queue for you."),
                 Commands.slash("join", "Joins 2G into voice channel"),
                 Commands.slash("disconnect", "Disconnects 2G from voice channel.")
-        ).queue();
+        ).queue();)
         return jda;
     }
 }
