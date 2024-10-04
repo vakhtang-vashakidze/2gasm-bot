@@ -43,7 +43,7 @@ public class BotConfig {
                 Commands.slash("clear", "2G clears song queue for you."),
                 Commands.slash("join", "Joins 2G into voice channel"),
                 Commands.slash("disconnect", "Disconnects 2G from voice channel.")
-        ).queue();)
+        ).queue());
         return jda;
     }
 }
