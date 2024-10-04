@@ -83,14 +83,21 @@ public class JukeBox {
 
     private void play(Guild guild, GuildMusicManager musicManager, AudioTrack track) {
         connectToFirstVoiceChannel(guild.getAudioManager());
-        musicManager.scheduler.queue(track);
+        musicManager.getScheduler().queue(track);
     }
 
     public void skipTrack(TextChannel channel) {
         GuildMusicManager musicManager = getGuildAudioPlayer(channel.getGuild());
-        musicManager.scheduler.nextTrack();
+        musicManager.getScheduler().nextTrack();
 
         channel.sendMessage("Skipped to next track.").queue();
+    }
+
+    public void clearTracks(TextChannel channel) {
+        GuildMusicManager musicManager = getGuildAudioPlayer(channel.getGuild());
+        musicManager.getScheduler().clearTracks();
+
+        channel.sendMessage("Cleared track queue.").queue();
     }
 
     public static void connectToFirstVoiceChannel(AudioManager audioManager) {

@@ -7,7 +7,8 @@ public enum CommandLiterals {
     PLAY("play"),
     JOIN("join"),
     DISCONNECT("disconnect"),
-    SKIP("skip");
+    SKIP("skip"),
+    CLEAR("clear");
 
     private final String literal;
 

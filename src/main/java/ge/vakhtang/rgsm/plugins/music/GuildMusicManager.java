@@ -2,19 +2,21 @@ package ge.vakhtang.rgsm.plugins.music;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
+import lombok.Getter;
 
 /**
  * Holder for both the player and a track scheduler for one guild.
  */
+@Getter
 public class GuildMusicManager {
   /**
    * Audio player for the guild.
    */
-  public final AudioPlayer player;
+  private final AudioPlayer player;
   /**
    * Track scheduler for the player.
    */
-  public final TrackScheduler scheduler;
+  private final TrackScheduler scheduler;
 
   /**
    * Creates a player and a track scheduler.

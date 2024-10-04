@@ -1,5 +1,7 @@
 package ge.vakhtang.rgsm.commands;
 
+import ge.vakhtang.rgsm.exceptions.BotAlreadyInDifferentChannelException;
+import ge.vakhtang.rgsm.exceptions.BotNotInSameChannelException;
 import ge.vakhtang.rgsm.plugins.music.JukeBox;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -22,7 +24,13 @@ public class PlayCommand extends ListenerAdapter {
         if (!event.getName().equals(PLAY.getLiteral())) {
             return;
         }
-        handleJoin(event);
-        jukeBox.loadAndPlay(event.getChannel(), event.getOption("url").getAsString());
+        try {
+            handleJoin(event);
+            jukeBox.loadAndPlay(event.getChannel(), event.getOption("url").getAsString());
+        } catch (BotNotInSameChannelException e) {
+            throw new RuntimeException(e);
+        } catch (BotAlreadyInDifferentChannelException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
