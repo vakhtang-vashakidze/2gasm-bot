@@ -15,21 +15,20 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: ''
 
-      - name: Build JAR with Maven
+      - name: Build WAR with Maven
         run: mvn clean package -DskipTests
 
-      - name: SCP the JAR to Droplet
-        uses: appleboy/scp-action@v0.2.2
+      - name: SCP the WAR to Droplet
+        uses: appleboy/scp-action@v0.1.3  # Corrected version
         with:
           host: ${{ secrets.DIGITALOCEAN_HOST }}
           username: ${{ secrets.DIGITALOCEAN_USER }}
           password: ${{ secrets.DIGITALOCEAN_PASSWORD }}
-          source: target/*.jar
+          source: target/*.war
           target: ${{ secrets.DEPLOY_PATH }}
 
-      - name: SSH into Droplet and deploy
+      - name: SSH into Droplet and deploy WAR using password
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.DIGITALOCEAN_HOST }}
@@ -38,5 +37,5 @@ jobs:
           script: |
             cd ${{ secrets.DEPLOY_PATH }}
             sudo systemctl stop 2g.service || true
-            sudo nohup java -jar rgsm-bot-0.0.1.jar > log.txt 2>&1 &
+            sudo nohup java -jar rgsm-bot-0.1.1.war > log.txt 2>&1 &
             sudo systemctl start 2g.service
