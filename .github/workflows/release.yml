@@ -29,7 +29,7 @@ jobs:
           source: target/*.jar
           target: ${{ secrets.DEPLOY_PATH }}
 
-      - name: SSH into Droplet and deploy WAR using password
+      - name: SSH into Droplet and deploy JAR using password
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.DIGITALOCEAN_HOST }}
